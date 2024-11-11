@@ -23,11 +23,19 @@ const stockSchema = new mongoose.Schema({
 	symbol: String,
 });
 
-const Stock = mongoose.model("Stock", stockSchema);
+const personScema = new mongoose.Schema({
+	name: String,
+	employement: String,
+	department: String,
+	experiance: Number,
+	age: Number,
+});
 
+const Stock = mongoose.model("sotck-collections", stockSchema);
+const Person = mongoose.model("person", personScema);
 app.get("/api/stocks", async (req, res) => {
 	try {
-		const stocks = await Stock.find();
+		const stocks = await Stock.find()
 		res.json(stocks);
 	} catch (error) {
 		console.error(error);
